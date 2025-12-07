@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,28 +12,50 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #001a33 0%, #1a0033 25%, #003366 50%, #4d0099 75%, #0059b3 100%);
-            color: #00d4ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animation du fond */
-        @keyframes matrix {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-50px) translateX(-50px); }
+            75% { transform: translateY(-150px) translateX(30px); }
         }
 
         /* Header Navigation */
         header {
-            background: linear-gradient(135deg, rgba(0, 26, 51, 0.95), rgba(77, 0, 153, 0.9));
-            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.2rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid #00d4ff;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
         }
 
@@ -49,33 +70,34 @@
         }
 
         .logo-nav {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #00d4ff;
-            text-shadow: 0 0 10px #00d4ff;
-            white-space: nowrap;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
         nav a {
-            color: #00d4ff;
+            color: #5a67d8;
             text-decoration: none;
             transition: all 0.3s;
             padding: 0.5rem 1rem;
-            border: 1px solid transparent;
-            white-space: nowrap;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-weight: 500;
         }
 
         nav a:hover {
-            border: 1px solid #00d4ff;
-            box-shadow: 0 0 10px #00d4ff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Section 1 - Hero */
@@ -84,8 +106,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 5% 50px;
+            padding: 120px 5% 50px;
             position: relative;
+            z-index: 1;
         }
 
         .hero-container {
@@ -95,44 +118,48 @@
 
         .hero-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .portfolio-label {
-            font-size: 0.9rem;
-            color: #00d4ff;
+            font-size: 0.95rem;
+            color: #667eea;
             margin-bottom: 0.5rem;
-            text-transform: lowercase;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
         }
 
         .hero-header h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 20px #00d4ff;
-            animation: glitch 3s infinite;
-            color: #00d4ff;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
         }
 
         .hero-main {
             display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 4rem;
-            align-items: start;
+            grid-template-columns: 380px 1fr;
+            gap: 5rem;
+            align-items: center;
         }
 
         .hero-content {
-            padding-top: 2rem;
+            padding-top: 1rem;
         }
 
         .hero-content h2 {
             font-size: 2rem;
-            color: #b366ff;
-            margin-bottom: 2rem;
+            color: #4c51bf;
+            margin-bottom: 1.5rem;
         }
 
         .hero-content p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            color: #ffffff;
+            color: #4a5568;
             line-height: 1.8;
         }
 
@@ -141,139 +168,157 @@
         }
 
         .photo-container {
-            width: 350px;
-            height: 350px;
-            margin: 0 auto;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 2rem;
             position: relative;
-            border: 3px solid #00d4ff;
-            border-radius: 10px;
+            border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 0 30px #00d4ff, 0 0 50px #9933ff, inset 0 0 20px rgba(0, 212, 255, 0.2);
-            animation: pulse 2s infinite;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            border: 5px solid white;
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 30px #00d4ff, 0 0 50px #9933ff, inset 0 0 20px rgba(0, 212, 255, 0.2); }
-            50% { box-shadow: 0 0 50px #00d4ff, 0 0 70px #9933ff, inset 0 0 30px rgba(153, 51, 255, 0.4); }
+        .photo-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 80px rgba(118, 75, 162, 0.5);
         }
 
         .photo-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.9) contrast(1.1);
         }
 
         .cyber-logo {
             text-align: center;
-            margin-top: 2rem;
         }
 
         .logo-svg {
-            width: 150px;
-            height: 150px;
-            filter: drop-shadow(0 0 15px #00d4ff);
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 4px 20px rgba(102, 126, 234, 0.3));
         }
 
         /* Bouton CTA */
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 2px solid #00d4ff;
-            color: #00d4ff;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             text-decoration: none;
             font-size: 1.1rem;
+            border-radius: 50px;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            font-weight: 600;
         }
 
         .cta-button:hover {
-            background: #00d4ff;
-            color: #001a33;
-            box-shadow: 0 0 20px #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
         /* Section 2 - Compétences */
         .skills {
             padding: 80px 5%;
-            background: linear-gradient(135deg, rgba(0, 51, 102, 0.5), rgba(77, 0, 153, 0.4), rgba(0, 89, 179, 0.3));
+            background: white;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            text-shadow: 0 0 15px #00d4ff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .skills-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .skill-card {
-            background: linear-gradient(135deg, rgba(0, 26, 51, 0.9), rgba(77, 0, 153, 0.7), rgba(0, 51, 102, 0.8));
-            padding: 2rem;
-            border: 1px solid #00d4ff;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             text-align: center;
+            border: 2px solid transparent;
         }
 
         .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5), 0 5px 20px rgba(153, 51, 255, 0.4);
-            border-color: #b366ff;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
         }
 
         .skill-card h3 {
-            color: #b366ff;
+            color: #4c51bf;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
 
         .skill-card p {
-            color: #a0a0a0;
+            color: #718096;
+            line-height: 1.6;
         }
 
         /* Section 3 - Projets */
         .projects {
             padding: 80px 5%;
+            position: relative;
+            z-index: 1;
         }
 
         .projects-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: linear-gradient(135deg, rgba(0, 26, 51, 0.9), rgba(77, 0, 153, 0.7), rgba(0, 51, 102, 0.8));
-            border: 1px solid #00d4ff;
-            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            border: 2px solid transparent;
         }
 
         .project-card:hover {
-            border-color: #b366ff;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 20px rgba(153, 51, 255, 0.3);
+            border-color: #764ba2;
+            box-shadow: 0 20px 50px rgba(118, 75, 162, 0.3);
+            transform: translateY(-10px);
         }
 
         .project-card h3 {
-            color: #b366ff;
+            color: #4c51bf;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #718096;
+            line-height: 1.6;
         }
 
         /* Section 4 - Contact */
         .contact {
             padding: 80px 5%;
-            background: linear-gradient(135deg, rgba(0, 51, 102, 0.5), rgba(77, 0, 153, 0.4), rgba(0, 89, 179, 0.3));
+            background: white;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-container {
@@ -286,7 +331,7 @@
             display: flex;
             justify-content: center;
             gap: 3rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
 
@@ -294,30 +339,174 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-item span {
+            font-size: 1.5rem;
         }
 
         .contact-item a {
-            color: #00d4ff;
+            color: #5a67d8;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 500;
             transition: all 0.3s;
         }
 
         .contact-item a:hover {
-            color: #b366ff;
-            text-shadow: 0 0 10px #b366ff;
+            color: #764ba2;
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, rgba(0, 26, 51, 0.95), rgba(77, 0, 153, 0.9));
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 2rem 5%;
             text-align: center;
-            border-top: 2px solid #00d4ff;
+            color: white;
         }
 
-        /* Responsive */
+        /* Chatbot static */
+        .chatbot-wrapper {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            font-size: 14px;
+        }
+
+        .chatbot-toggle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .chatbot-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px rgba(102, 126, 234, 0.7);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 72px;
+            right: 0;
+            width: 320px;
+            max-height: 420px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 0.8rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .chatbot-header-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .chatbot-header-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .chatbot-messages {
+            padding: 0.8rem;
+            flex: 1;
+            overflow-y: auto;
+            background: #f7f8fc;
+        }
+
+        .chatbot-message {
+            max-width: 85%;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .chatbot-message.user {
+            margin-left: auto;
+            background: #667eea;
+            color: #fff;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chatbot-message.bot {
+            margin-right: auto;
+            background: #ffffff;
+            color: #2d3748;
+            border-bottom-left-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            gap: 0.4rem;
+            padding: 0.6rem;
+            border-top: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+
+        .chatbot-input-area input {
+            flex: 1;
+            border-radius: 20px;
+            border: 1px solid #cbd5e0;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .chatbot-input-area button {
+            border-radius: 20px;
+            border: none;
+            padding: 0.35rem 0.9rem;
+            background: #667eea;
+            color: #fff;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .chatbot-input-area button:hover {
+            background: #4c51bf;
+        }
+
+        .chatbot-hints {
+            font-size: 0.75rem;
+            color: #4a5568;
+            margin-top: 0.4rem;
+        }
+
         @media (max-width: 968px) {
             .hero-main {
                 grid-template-columns: 1fr;
@@ -325,20 +514,12 @@
             }
 
             .hero-header h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content p br {
-                display: none;
+                font-size: 2.2rem;
             }
 
             .photo-container {
-                width: 300px;
-                height: 300px;
+                width: 280px;
+                height: 280px;
             }
         }
 
@@ -348,26 +529,43 @@
                 align-items: center;
             }
 
-            .logo-nav {
-                font-size: 1.2rem;
-            }
-
             .hero-header h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .photo-container {
-                width: 250px;
-                height: 250px;
+                width: 240px;
+                height: 240px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .chatbot-window {
+                width: 280px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Particles Background -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+
     <!-- Header Navigation -->
     <header>
         <nav>
-            <div class="logo-nav">&lt;/&gt; CyberSec</div>
+            <div class="logo-nav">✨ Tasnim Osghir</div>
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#competences">Compétences</a></li>
@@ -381,38 +579,33 @@
     <section id="accueil" class="hero">
         <div class="hero-container">
             <div class="hero-header">
-                <p class="portfolio-label">portfolio en Cybersécurité</p>
-                <h1>TASNIM OSGHIR | Cybersécurité</h1>
+                <p class="portfolio-label">Portfolio en Cybersécurité</p>
+                <h1>Tasnim Osghir</h1>
             </div>
             
             <div class="hero-main">
                 <div class="profile-section">
                     <div class="photo-container">
-                        <!-- Remplacez le src par le chemin de votre photo -->
-                        <img src="https://via.placeholder.com/300x300/001a33/00d4ff?text=PHOTO" alt="Photo de profil">
+                        <img src="https://via.placeholder.com/320x320/667eea/ffffff?text=PHOTO" alt="Photo de profil">
                     </div>
                     <div class="cyber-logo">
-                        <!-- Logo Cybersécurité SVG -->
                         <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                            <path d="M50 15 L50 35 M50 65 L50 85 M15 50 L35 50 M65 50 L85 50" stroke="#00d4ff" stroke-width="3"/>
-                            <circle cx="50" cy="50" r="15" fill="none" stroke="#b366ff" stroke-width="2"/>
-                            <path d="M50 35 L35 50 L50 65 L65 50 Z" fill="none" stroke="#9933ff" stroke-width="2"/>
-                            <circle cx="50" cy="50" r="5" fill="#b366ff"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#667eea" stroke-width="2"/>
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="#764ba2" stroke-width="1.5" opacity="0.5"/>
+                            <path d="M50 20 L50 35 M50 65 L50 80 M20 50 L35 50 M65 50 L80 50" stroke="#667eea" stroke-width="2.5"/>
+                            <circle cx="50" cy="50" r="15" fill="none" stroke="#764ba2" stroke-width="2"/>
+                            <circle cx="50" cy="50" r="7" fill="#667eea"/>
                         </svg>
                     </div>
                 </div>
 
                 <div class="hero-content">
-                    <h2>À propos de moi :</h2>
+                    <h2>À propos de moi</h2>
                     <p>
-                        Je suis étudiante en cybersécurité, passionnée par la sécurité des systèmes,<br>
-                        la protection des réseaux et l'analyse des vulnérabilités.
+                        Étudiante passionnée par la cybersécurité, je me spécialise dans la protection des systèmes d'information, l'analyse des vulnérabilités et la sécurisation des infrastructures réseau.
                     </p>
                     <p>
-                        Je développe mes compétences à travers mes projets académiques,<br>
-                        mes travaux pratiques (réseaux Cisco, Linux, sécurisation de postes),<br>
-                        et mes recherches personnelles dans le domaine de la sécurité informatique.
+                        À travers mes projets académiques et mes expériences pratiques (réseaux Cisco, administration Linux, sécurisation de postes), je développe continuellement mes compétences pour devenir une experte en sécurité informatique.
                     </p>
                     <a href="#contact" class="cta-button">Me Contacter</a>
                 </div>
@@ -422,41 +615,42 @@
 
     <!-- Section 2 - Compétences -->
     <section id="competences" class="skills">
-        <h2 class="section-title">[ Compétences ]</h2>
+        <h2 class="section-title">Compétences</h2>
         <div class="skills-grid">
             <div class="skill-card">
                 <h3>🛡️ Sécurité Réseau</h3>
-                <p>Configuration de pare-feu, détection d'intrusions, analyse de trafic réseau</p>
+                <p>Configuration de pare-feu, détection d'intrusions, analyse de trafic réseau et protection des infrastructures</p>
             </div>
             <div class="skill-card">
                 <h3>🔐 Cryptographie</h3>
-                <p>Chiffrement, authentification, gestion des certificats SSL/TLS</p>
+                <p>Chiffrement des données, authentification sécurisée, gestion des certificats SSL/TLS</p>
             </div>
             <div class="skill-card">
                 <h3>🐧 Systèmes Linux</h3>
-                <p>Administration système, sécurisation, automatisation avec scripts</p>
+                <p>Administration système, sécurisation serveur, automatisation avec scripts shell</p>
             </div>
             <div class="skill-card">
-                <h3>💻 Programmation</h3>
-                <p>Python,html,css, JavaScript pour l'automatisation et l'analyse</p>
+                <h3>💻 Développement</h3>
+                <p>Python, HTML, CSS, JavaScript pour l'automatisation et l'analyse de sécurité</p>
+            </div>
         </div>
     </section>
 
     <!-- Section 3 - Projets -->
     <section id="projets" class="projects">
-        <h2 class="section-title">[ Projets ]</h2>
+        <h2 class="section-title">Projets</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Projet 1</h3>
-                <p>Description de votre projet de cybersécurité. Par exemple : Développement d'un outil de scan de vulnérabilités réseau.</p>
+                <p>Développement d'un outil de scan de vulnérabilités réseau permettant d'identifier et analyser les failles de sécurité potentielles.</p>
             </div>
             <div class="project-card">
                 <h3>Projet 2</h3>
-                <p>Mise en place d'une infrastructure sécurisée avec authentification multi-facteurs et monitoring.</p>
+                <p>Mise en place d'une infrastructure sécurisée avec authentification multi-facteurs et système de monitoring en temps réel.</p>
             </div>
             <div class="project-card">
                 <h3>Projet 3</h3>
-                <p>Analyse forensique d'incidents de sécurité et création de rapports d'audit détaillés.</p>
+                <p>Analyse forensique d'incidents de sécurité et création de rapports d'audit détaillés avec recommandations.</p>
             </div>
         </div>
     </section>
@@ -464,28 +658,143 @@
     <!-- Section 4 - Contact -->
     <section id="contact" class="contact">
         <div class="contact-container">
-            <h2 class="section-title">[ Contact ]</h2>
+            <h2 class="section-title">Contact</h2>
             <p>N'hésitez pas à me contacter pour toute opportunité ou collaboration</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📧 Email</span>
-                    <a href="mailto:votre.email@example.com">votre.email@example.com</a>
+                    <span>📧</span>
+                    <a href="mailto:votre.email@example.com">osghir.tasnim@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <span>💼 LinkedIn</span>
-                    <a href="#" target="_blank">Votre Profil</a>
+                    <span>💼</span>
+                    <a href="#" target="_blank">LinkedIn</a>
                 </div>
                 <div class="contact-item">
-                    <span>🐙 GitHub</span>
-                    <a href="#" target="_blank">Votre GitHub</a>
+                    <span>💻</span>
+                    <a href="#" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Static Chatbot -->
+    <div class="chatbot-wrapper">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Chat avec Tasnim">💬</button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-title">Bot Tasnim</div>
+                <div class="chatbot-header-subtitle">
+                    Je réponds seulement aux questions sur moi 😊
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot">
+                    Salut ! Pose-moi une question sur moi.<br>
+                    Exemples :<br>
+                    • Qui es-tu ?<br>
+                    • Que fais-tu en ce moment ?<br>
+                    • Quelles sont tes compétences ?
+                </div>
+            </div>
+            <form class="chatbot-input-area" id="chatbotForm">
+                <input type="text" id="chatbotInput" placeholder="Écris ta question..." autocomplete="off" />
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Portfolio Cybersécurité - Tous droits réservés</p>
+        <p>© 2025 Tasnim Osghir - Portfolio Cybersécurité</p>
     </footer>
+
+    <!-- Chatbot logic -->
+    <script>
+        const toggleBtn = document.getElementById('chatbotToggle');
+        const windowEl = document.getElementById('chatbotWindow');
+        const formEl = document.getElementById('chatbotForm');
+        const inputEl = document.getElementById('chatbotInput');
+        const messagesEl = document.getElementById('chatbotMessages');
+
+        const qaPairs = [
+            {
+                keywords: ['nom'],
+                answer: "Je m'appelle Tasnim Osghir, étudiante en ingénierie de la cybersécurité."
+            },
+            {
+                keywords: ['name'],
+                answer: "My name is Tasnim Osghir, a cybersecurity engineering student."
+            },
+            {
+                keywords: ['qui', 'es', 'tu'],
+                answer: "Je suis Tasnim, étudiante en cybersécurité passionnée par la protection des systèmes d'information."
+            },
+            {
+                keywords: ['what', 'do', 'you', 'study'],
+                answer: "I study cybersecurity, with a focus on network security, Linux systems and vulnerability analysis."
+            },
+            {
+                keywords: ['cyber', 'security'],
+                answer: "I focus on cybersecurity: network security, vulnerability analysis, Linux hardening and basic cryptography."
+            },
+            {
+                keywords: ['compétence'],
+                answer: "Mes principales compétences : sécurité réseau, cryptographie de base, administration Linux, et développement en Python / HTML / CSS / JavaScript."
+            },
+            {
+                keywords: ['skills'],
+                answer: "My main skills: network security, basic cryptography, Linux administration and scripting / development with Python, HTML, CSS and JavaScript."
+            },
+            {
+                keywords: ['project'],
+                answer: "I worked on projects like vulnerability scanning tools, secure network setups with monitoring, and small forensic analysis reports."
+            },
+            {
+                keywords: ['projet'],
+                answer: "J'ai réalisé des projets comme un outil de scan de vulnérabilités, une infrastructure sécurisée avec MFA et du monitoring, et des analyses forensiques simples."
+            },
+            {
+                keywords: ['contact'],
+                answer: "Tu peux me contacter par e-mail (section Contact de ce site) ou via mon LinkedIn."
+            },
+            {
+                keywords: ['where', 'from'],
+                answer: "I'm from Morocco and I'm building my path in cybersecurity."
+            }
+        ];
+
+        function addMessage(text, type) {
+            const div = document.createElement('div');
+            div.classList.add('chatbot-message', type);
+            div.textContent = text;
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function findAnswer(question) {
+            const q = question.toLowerCase();
+            for (const pair of qaPairs) {
+                const allMatch = pair.keywords.every(k => q.includes(k));
+                if (allMatch) return pair.answer;
+            }
+            return "Je suis un petit bot statique 😅 Je réponds seulement à des questions simples sur Tasnim. Essaye par exemple : « Qui es-tu ? », « Quelles sont tes compétences ? » ou « What do you study? »";
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            windowEl.classList.toggle('open');
+        });
+
+        formEl.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = inputEl.value.trim();
+            if (!text) return;
+            addMessage(text, 'user');
+            const answer = findAnswer(text);
+            setTimeout(() => {
+                addMessage(answer, 'bot');
+            }, 200);
+            inputEl.value = '';
+        });
+    </script>
 </body>
 </html>
