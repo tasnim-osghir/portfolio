@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Cybersécurité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #001a33 0%, #1a0033 25%, #003366 50%, #4d0099 75%, #0059b3 100%);
+            color: #00d4ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animation du fond */
+        @keyframes matrix {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Header Navigation */
+        header {
+            background: linear-gradient(135deg, rgba(0, 26, 51, 0.95), rgba(77, 0, 153, 0.9));
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00d4ff;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-nav {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            border: 1px solid #00d4ff;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Section 1 - Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5% 50px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-label {
+            font-size: 0.9rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            text-transform: lowercase;
+        }
+
+        .hero-header h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px #00d4ff;
+            animation: glitch 3s infinite;
+            color: #00d4ff;
+        }
+
+        .hero-main {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .hero-content {
+            padding-top: 2rem;
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            color: #b366ff;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        .profile-section {
+            position: relative;
+        }
+
+        .photo-container {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+            position: relative;
+            border: 3px solid #00d4ff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px #00d4ff, 0 0 50px #9933ff, inset 0 0 20px rgba(0, 212, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px #00d4ff, 0 0 50px #9933ff, inset 0 0 20px rgba(0, 212, 255, 0.2); }
+            50% { box-shadow: 0 0 50px #00d4ff, 0 0 70px #9933ff, inset 0 0 30px rgba(153, 51, 255, 0.4); }
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .cyber-logo {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .logo-svg {
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(0 0 15px #00d4ff);
+        }
+
+        /* Bouton CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background: #00d4ff;
+            color: #001a33;
+            box-shadow: 0 0 20px #00d4ff;
+        }
+
+        /* Section 2 - Compétences */
+        .skills {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.5), rgba(77, 0, 153, 0.4), rgba(0, 89, 179, 0.3));
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px #00d4ff;
+        }
+
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(0, 26, 51, 0.9), rgba(77, 0, 153, 0.7), rgba(0, 51, 102, 0.8));
+            padding: 2rem;
+            border: 1px solid #00d4ff;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5), 0 5px 20px rgba(153, 51, 255, 0.4);
+            border-color: #b366ff;
+        }
+
+        .skill-card h3 {
+            color: #b366ff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-card p {
+            color: #a0a0a0;
+        }
+
+        /* Section 3 - Projets */
+        .projects {
+            padding: 80px 5%;
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(0, 26, 51, 0.9), rgba(77, 0, 153, 0.7), rgba(0, 51, 102, 0.8));
+            border: 1px solid #00d4ff;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: #b366ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 20px rgba(153, 51, 255, 0.3);
+        }
+
+        .project-card h3 {
+            color: #b366ff;
+            margin-bottom: 1rem;
+        }
+
+        /* Section 4 - Contact */
+        .contact {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.5), rgba(77, 0, 153, 0.4), rgba(0, 89, 179, 0.3));
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #b366ff;
+            text-shadow: 0 0 10px #b366ff;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 26, 51, 0.95), rgba(77, 0, 153, 0.9));
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 2px solid #00d4ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-header h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p br {
+                display: none;
+            }
+
+            .photo-container {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-nav {
+                font-size: 1.2rem;
+            }
+
+            .hero-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .photo-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo-nav">&lt;/&gt; CyberSec</div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section 1 - Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-container">
+            <div class="hero-header">
+                <p class="portfolio-label">portfolio en Cybersécurité</p>
+                <h1>VOTRE NOM | Cybersécurité</h1>
+            </div>
+            
+            <div class="hero-main">
+                <div class="profile-section">
+                    <div class="photo-container">
+                        <!-- Remplacez le src par le chemin de votre photo -->
+                        <img src="https://via.placeholder.com/300x300/001a33/00d4ff?text=PHOTO" alt="Photo de profil">
+                    </div>
+                    <div class="cyber-logo">
+                        <!-- Logo Cybersécurité SVG -->
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                            <path d="M50 15 L50 35 M50 65 L50 85 M15 50 L35 50 M65 50 L85 50" stroke="#00d4ff" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="15" fill="none" stroke="#b366ff" stroke-width="2"/>
+                            <path d="M50 35 L35 50 L50 65 L65 50 Z" fill="none" stroke="#9933ff" stroke-width="2"/>
+                            <circle cx="50" cy="50" r="5" fill="#b366ff"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="hero-content">
+                    <h2>À propos de moi :</h2>
+                    <p>
+                        Je suis étudiante en cybersécurité, passionnée par la sécurité des systèmes,<br>
+                        la protection des réseaux et l'analyse des vulnérabilités.
+                    </p>
+                    <p>
+                        Je développe mes compétences à travers mes projets académiques,<br>
+                        mes travaux pratiques (réseaux Cisco, Linux, sécurisation de postes),<br>
+                        et mes recherches personnelles dans le domaine de la sécurité informatique.
+                    </p>
+                    <a href="#contact" class="cta-button">Me Contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 - Compétences -->
+    <section id="competences" class="skills">
+        <h2 class="section-title">[ Compétences ]</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🛡️ Sécurité Réseau</h3>
+                <p>Configuration de pare-feu, détection d'intrusions, analyse de trafic réseau</p>
+            </div>
+            <div class="skill-card">
+                <h3>🔐 Cryptographie</h3>
+                <p>Chiffrement, authentification, gestion des certificats SSL/TLS</p>
+            </div>
+            <div class="skill-card">
+                <h3>🐧 Systèmes Linux</h3>
+                <p>Administration système, sécurisation, automatisation avec scripts</p>
+            </div>
+            <div class="skill-card">
+                <h3>🔍 Tests d'Intrusion</h3>
+                <p>Audit de sécurité, recherche de vulnérabilités, exploitation éthique</p>
+            </div>
+            <div class="skill-card">
+                <h3>💻 Programmation</h3>
+                <p>Python, Bash, JavaScript pour l'automatisation et l'analyse</p>
+            </div>
+            <div class="skill-card">
+                <h3>📊 Analyse Forensique</h3>
+                <p>Investigation numérique, analyse de logs, récupération de données</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 - Projets -->
+    <section id="projets" class="projects">
+        <h2 class="section-title">[ Projets ]</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Projet 1</h3>
+                <p>Description de votre projet de cybersécurité. Par exemple : Développement d'un outil de scan de vulnérabilités réseau.</p>
+            </div>
+            <div class="project-card">
+                <h3>Projet 2</h3>
+                <p>Mise en place d'une infrastructure sécurisée avec authentification multi-facteurs et monitoring.</p>
+            </div>
+            <div class="project-card">
+                <h3>Projet 3</h3>
+                <p>Analyse forensique d'incidents de sécurité et création de rapports d'audit détaillés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 - Contact -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">[ Contact ]</h2>
+            <p>N'hésitez pas à me contacter pour toute opportunité ou collaboration</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧 Email</span>
+                    <a href="mailto:votre.email@example.com">votre.email@example.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼 LinkedIn</span>
+                    <a href="#" target="_blank">Votre Profil</a>
+                </div>
+                <div class="contact-item">
+                    <span>🐙 GitHub</span>
+                    <a href="#" target="_blank">Votre GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Portfolio Cybersécurité - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
